@@ -1,0 +1,49 @@
+{
+  "rfc": {
+    "prefix": "rfc",
+    "body": [
+      "const ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g} = (): React.JSX.Element | null => {\r",
+      "  return <>${1}</>;\r",
+      "};\r",
+      "\r",
+      "export default ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g};\r",
+      ""
+    ],
+    "description": "React Function component"
+  },
+  "rfcp": {
+    "prefix": "rfcp",
+    "body": [
+      "interface ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g}Props {\r",
+      "  ${1}\r",
+      "};\r",
+      "\r",
+      "const ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g} = ({  }: ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g}Props): React.JSX.Element | null => {\r",
+      "  \r",
+      "  return <></>;\r",
+      "};\r",
+      "\r",
+      "export default ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g};\r",
+      ""
+    ],
+    "description": "React Function component with props"
+  },
+  "rfcpc": {
+    "prefix": "rfcpc",
+    "body": [
+      "interface ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g}Props {\r",
+      "  children: React.ReactNode;\r",
+      "};\r",
+      "\r",
+      "const ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g} = ({ children }: ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g}Props): React.JSX.Element | null => {\r",
+      "  ${1}\r",
+      "\r",
+      "  return <div>{children}</div>;\r",
+      "};\r",
+      "\r",
+      "export default ${TM_FILENAME_BASE/^([a-z])|[-_](\\w)/${1:/upcase}${2:/upcase}/g};\r",
+      ""
+    ],
+    "description": "React Function component with children props"
+  }
+}

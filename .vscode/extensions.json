@@ -1,0 +1,5 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss" // TailwindCSS 코드 완성을 지원하는 확장
+  ]
+}
