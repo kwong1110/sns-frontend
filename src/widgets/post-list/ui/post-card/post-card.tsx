@@ -29,7 +29,9 @@ export function PostCard({ post }: PostCardProps) {
             src={post.author?.profileImage || "/placeholder.svg"}
             alt={post.author?.name || NO_DATA}
           />
-          <AvatarFallback>{post.author?.name || NO_DATA}</AvatarFallback>
+          <AvatarFallback>
+            <AvatarImage alt={post.author?.name || NO_DATA} />
+          </AvatarFallback>
         </Avatar>
 
         <div className="min-w-0 flex-1">
