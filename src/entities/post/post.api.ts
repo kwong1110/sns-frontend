@@ -1,4 +1,4 @@
-import { MOCK_POSTS } from "@/entities/post/post.mock";
+import { MOCK_POSTS } from "@/entities/post/mock/post.mock";
 import { Post } from "@/entities/post/post.types";
 
 export const getPosts = async (request: {

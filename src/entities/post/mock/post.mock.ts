@@ -2,6 +2,72 @@ import { Post } from "@/entities/post/post.types";
 
 export const MOCK_POSTS: Post[] = [
   {
+    id: 53,
+    author: {
+      name: "박요리",
+      nickname: "parkcooking",
+      profileImage: "https://picsum.photos/40/40?random=50",
+      verified: true,
+    },
+    content:
+      "오늘은 집에서 파스타를 만들어봤어요! 크림소스 파스타인데 정말 맛있게 나왔습니다. 요리하는 시간이 정말 힐링이에요 🍝 #요리일지 #파스타 #홈쿡",
+    images: [],
+    category: 1,
+    categoryName: "요리",
+    createdAt: "2025-09-30T14:30:00Z",
+    likes: 67,
+    retweets: 12,
+    comments: 8,
+    isLiked: false,
+    isRetweeted: false,
+    hasMoreComments: true,
+    commentList: [],
+  },
+  {
+    id: 52,
+    author: {
+      name: "박요리",
+      nickname: "parkcooking",
+      profileImage: "https://picsum.photos/40/40?random=50",
+      verified: true,
+    },
+    content:
+      "오늘은 집에서 파스타를 만들어봤어요! 크림소스 파스타인데 정말 맛있게 나왔습니다. 요리하는 시간이 정말 힐링이에요 🍝 #요리일지 #파스타 #홈쿡",
+    images: [],
+    category: 1,
+    categoryName: "요리",
+    createdAt: "2025-04-30T14:30:00Z",
+    likes: 67,
+    retweets: 12,
+    comments: 8,
+    isLiked: false,
+    isRetweeted: false,
+    hasMoreComments: true,
+    commentList: [],
+  },
+  {
+    id: 51,
+    author: {
+      name: "박요리",
+      nickname: "parkcooking",
+      profileImage: "https://picsum.photos/40/40?random=50",
+      verified: true,
+    },
+    content:
+      "오늘은 집에서 파스타를 만들어봤어요! 크림소스 파스타인데 정말 맛있게 나왔습니다. 요리하는 시간이 정말 힐링이에요 🍝 #요리일지 #파스타 #홈쿡",
+    images: [],
+    category: 1,
+    categoryName: "요리",
+    createdAt: "2025-10-15T14:30:00Z",
+    likes: 67,
+    retweets: 12,
+    comments: 8,
+    isLiked: false,
+    isRetweeted: false,
+    hasMoreComments: true,
+    commentList: [],
+  },
+  {
     id: 50,
     author: {
       name: "박요리",

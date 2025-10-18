@@ -1,4 +1,4 @@
-import { ReactQueryProvider } from "@/app/providers/react-query";
+import { ReactQueryProvider } from "@/app/_providers/react-query";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
