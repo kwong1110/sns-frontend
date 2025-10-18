@@ -2,6 +2,7 @@
 
 import type React from "react";
 
+import { ImageModal } from "@/shared/components";
 import { cn } from "@/shared/lib/ui-utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -59,22 +60,33 @@ export function PostImages({ images }: PostImagesProps) {
   if (images.length === 1) {
     return (
       <>
-        <button
-          className="relative w-full overflow-hidden rounded-2xl bg-muted transition-opacity hover:opacity-95"
-          onClick={() => setSelectedImage(images[0])}
-          type="button"
-          style={{ maxHeight: "300px" }}
+        <div
+          className="overflow-hidden rounded-2xl w-fit"
+          style={{ maxHeight: "200px" }}
         >
-          <Image
-            src={images[0] || "/placeholder.svg"}
-            alt="Post image"
-            width={600}
-            height={400}
-            className="h-auto w-full object-cover"
-            loading="lazy"
-            sizes="(max-width: 768px) 100vw, 600px"
+          <button
+            className="relative flex justify-start items-center cursor-pointer"
+            onClick={() => setSelectedImage(images[0])}
+            type="button"
+            style={{ maxHeight: "200px" }}
+          >
+            <Image
+              src={images[0] || "/placeholder.svg"}
+              alt="Post image"
+              width={500}
+              height={200}
+              className="w-auto h-auto max-w-full max-h-[200px] object-contain"
+              loading="lazy"
+            />
+          </button>
+        </div>
+
+        {selectedImage && (
+          <ImageModal
+            image={selectedImage}
+            onClose={() => setSelectedImage(null)}
           />
-        </button>
+        )}
       </>
     );
   }
@@ -89,22 +101,29 @@ export function PostImages({ images }: PostImagesProps) {
           {images.map((image, index) => (
             <button
               key={index}
-              className="relative overflow-hidden bg-muted transition-opacity hover:opacity-95"
+              className="relative overflow-hidden bg-muted transition-opacity hover:opacity-95 cursor-pointer"
               onClick={() => setSelectedImage(image)}
               type="button"
-              style={{ height: "300px" }}
+              style={{ height: "200px" }}
             >
               <Image
-                src={image || "/placeholder.svg"}
+                src={image || "./placeholder.svg"}
                 alt={`Post image ${index + 1}`}
                 fill
                 className="object-cover"
                 loading="lazy"
-                sizes="(max-width: 768px) 50vw, 300px"
+                sizes="(max-width: 768px) 50vw, 200px"
               />
             </button>
           ))}
         </div>
+
+        {selectedImage && (
+          <ImageModal
+            image={selectedImage}
+            onClose={() => setSelectedImage(null)}
+          />
+        )}
       </>
     );
   }
@@ -126,18 +145,17 @@ export function PostImages({ images }: PostImagesProps) {
           {images.map((image, index) => (
             <button
               key={index}
-              className="relative min-w-full"
-              onClick={() => setSelectedImage(image)}
               type="button"
-              style={{ height: "400px" }}
+              onClick={() => setSelectedImage(image)}
+              className="relative min-w-full flex justify-center items-center cursor-pointer"
             >
               <Image
                 src={image || "/placeholder.svg"}
                 alt={`Post image ${index + 1}`}
-                fill
-                className="object-cover"
+                width={800}
+                height={200}
+                className="w-auto h-auto max-w-full max-h-[200px] object-contain"
                 loading="lazy"
-                sizes="(max-width: 768px) 100vw, 600px"
               />
             </button>
           ))}
@@ -149,7 +167,7 @@ export function PostImages({ images }: PostImagesProps) {
               e.stopPropagation();
               goToPrevious();
             }}
-            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1.5 text-white transition-colors hover:bg-black/70"
+            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1.5 text-white transition-colors hover:bg-black/70 cursor-pointer"
             aria-label="Previous image"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -162,7 +180,7 @@ export function PostImages({ images }: PostImagesProps) {
               e.stopPropagation();
               goToNext();
             }}
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1.5 text-white transition-colors hover:bg-black/70"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1.5 text-white transition-colors hover:bg-black/70 cursor-pointer"
             aria-label="Next image"
           >
             <ChevronRight className="h-5 w-5" />
@@ -192,6 +210,13 @@ export function PostImages({ images }: PostImagesProps) {
           ))}
         </div>
       </div>
+
+      {selectedImage && (
+        <ImageModal
+          image={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
     </>
   );
 }
