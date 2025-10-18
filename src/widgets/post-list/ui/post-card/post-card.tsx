@@ -5,6 +5,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
+  Badge,
   Button,
 } from "@/shared/components/ui";
 import { formatRelativeTime } from "@/shared/lib/date-utils";
@@ -52,6 +53,12 @@ export function PostCard({ post }: PostCardProps) {
             <div className="mt-2">
               <PostImages images={post.images} />
             </div>
+          )}
+
+          {post.category && (
+            <Badge variant="secondary" className="mt-3">
+              {post.categoryName}
+            </Badge>
           )}
 
           <div className="mt-3 flex items-center gap-1">
