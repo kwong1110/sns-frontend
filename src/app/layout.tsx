@@ -1,4 +1,5 @@
 import { ReactQueryProvider } from "@/app/_providers/react-query";
+import { Sidebar } from "@/widgets/sidebar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -28,7 +29,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <div className="flex min-h-screen bg-background">
+          <Sidebar />
+
+          <div className="flex flex-1 justify-center md:ml-19">
+            <main className="w-full lg:max-w-[640px] border-x border-border pb-16 md:pb-0 bg-primary-foreground">
+              <ReactQueryProvider>{children}</ReactQueryProvider>
+            </main>
+          </div>
+        </div>
       </body>
     </html>
   );
