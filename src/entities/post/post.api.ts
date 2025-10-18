@@ -1,4 +1,9 @@
 import { MOCK_POSTS } from "@/entities/post/mock/post.mock";
+import { Post } from "@/entities/post/post.types";
+import { MOCK_CURRENT_USER } from "@/entities/user/current-user.mock";
+import { pick } from "lodash-es";
+
+let mockPosts: Post[] = MOCK_POSTS;
 
 export async function getPosts({
   pageParam = 0,
@@ -15,8 +20,8 @@ export async function getPosts({
   const start = pageParam * pageSize;
 
   let filteredPosts = !category
-    ? MOCK_POSTS
-    : MOCK_POSTS.filter((post) => post.category === category);
+    ? mockPosts
+    : mockPosts.filter((post) => post.category === category);
 
   filteredPosts = [...filteredPosts].sort((a, b) => {
     if (sortBy === "latest") {
@@ -50,3 +55,37 @@ export const toggleLike = async (postId: number) => {
 
   return { success: true };
 };
+
+export async function createPost(data: {
+  content: string;
+  category: number;
+  images?: string[];
+}): Promise<Post> {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const nextId = (mockPosts[0]?.id || 0) + 1;
+
+  const newPost: Post = {
+    id: nextId,
+    author: pick(MOCK_CURRENT_USER, [
+      "name",
+      "nickname",
+      "profileImage",
+      "verified",
+    ]),
+    content: data.content,
+    images: data.images,
+    category: data.category,
+    createdAt: new Date().toISOString(),
+    likes: 0,
+    retweets: 0,
+    comments: 0,
+    isLiked: false,
+    isRetweeted: false,
+    hasMoreComments: false,
+    commentList: [],
+  };
+
+  mockPosts = [newPost, ...mockPosts];
+  return newPost;
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import { CreatePostModal } from "@/features/create-post/ui/create-post-modal";
 import { Button } from "@/shared/components/ui";
 import { cn } from "@/shared/lib/ui-utils";
 import {
@@ -12,6 +13,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { overlay } from "overlay-kit";
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -19,7 +21,19 @@ export function Sidebar() {
   const navItems = [
     { icon: Home, href: "/", label: "홈" },
     { icon: Search, href: "/search", label: "검색" },
-    { icon: Plus, label: "작성", onClick: () => {} },
+    {
+      icon: Plus,
+      label: "작성",
+      onClick: () =>
+        overlay.open(({ isOpen, close }) => (
+          <CreatePostModal
+            isOpen={isOpen}
+            onClose={() => {
+              close();
+            }}
+          />
+        )),
+    },
     { icon: Heart, href: "/activity", label: "활동" },
     { icon: UserRound, href: "/profile", label: "프로필" },
   ];
