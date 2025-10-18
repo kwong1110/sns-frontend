@@ -1,3 +1,4 @@
+import { MOCK_POST_CATEGORIES } from "@/entities/post/mock/post-filters.mock";
 import { MOCK_POSTS } from "@/entities/post/mock/post.mock";
 import { Post } from "@/entities/post/post.types";
 import { MOCK_CURRENT_USER } from "@/entities/user/current-user.mock";
@@ -64,6 +65,9 @@ export async function createPost(data: {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const nextId = (mockPosts[0]?.id || 0) + 1;
+  const categoryName = MOCK_POST_CATEGORIES.find(
+    (mockCategory) => mockCategory.id === data.category
+  )?.name;
 
   const newPost: Post = {
     id: nextId,
@@ -76,6 +80,7 @@ export async function createPost(data: {
     content: data.content,
     images: data.images,
     category: data.category,
+    categoryName: categoryName,
     createdAt: new Date().toISOString(),
     likes: 0,
     retweets: 0,
