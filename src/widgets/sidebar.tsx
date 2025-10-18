@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/shared/components/ui/button";
+import { Button } from "@/shared/components/ui";
 import { cn } from "@/shared/lib/ui-utils";
 import {
   Heart,

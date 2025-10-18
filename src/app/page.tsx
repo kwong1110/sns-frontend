@@ -1,5 +1,6 @@
 "use client";
 
+import { PostList } from "@/widgets/post-list/ui/post-list";
 import { Sidebar } from "@/widgets/sidebar";
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
 
       <div className="flex flex-1 justify-center md:ml-19">
         <main className="w-full lg:max-w-[640px] border-x border-border pb-16 md:pb-0 bg-primary-foreground">
-          피드
+          <PostList />
         </main>
       </div>
     </div>
